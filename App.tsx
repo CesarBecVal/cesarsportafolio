@@ -6,6 +6,7 @@ import Section from './components/Section';
 import Button from './components/Button';
 import HeroLaptop from './components/HeroLaptop';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Github, Linkedin, Twitter, ExternalLink, Mail, MapPin, Calendar, Download, Globe, Award } from 'lucide-react';
 
 // --- CONFIGURACIÓN DE IMÁGENES LOCALES ---
@@ -369,6 +370,9 @@ const App: React.FC = () => {
 
       {/* Vercel Web Analytics */}
       <Analytics />
+
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 };
