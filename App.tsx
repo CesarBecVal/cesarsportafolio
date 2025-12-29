@@ -186,16 +186,26 @@ const App: React.FC = () => {
                 </div>
               </div>
             </div>
+            {/* Profile Image Container */}
             <div className="relative group">
+              {/* Outer Glow Halo */}
               <div className="absolute -inset-1 bg-gradient-to-r from-accent to-secondary rounded-lg blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-              <div className="relative aspect-square rounded-lg overflow-hidden bg-slate-800 border border-white/10 flex items-center justify-center">
-                {/* Placeholder for Profile Image */}
-                 <img 
-                   // PASO 4: Cambia la URL fija por tu variable importada, ej: src={profileImg}
-                   src={profileImg}
+              
+              {/* Image Frame */}
+              <div className="relative aspect-square rounded-lg overflow-hidden bg-slate-800 border border-white/10 flex items-center justify-center group/image">
+                <img 
+                   src={profileImg} 
                    alt="Profile" 
-                   className="w-full h-full object-cover opacity-80 hover:opacity-100 transition-opacity duration-500 grayscale hover:grayscale-0" 
-                 />
+                   className="w-full h-full object-cover transition-all duration-700 grayscale group-hover/image:grayscale-0 group-hover/image:scale-105" 
+                />
+                
+                {/* Blue Tint Filter (The "Tech" Look) */}
+                {/* mix-blend-color applies the hue of this layer to the grayscale image below */}
+                <div className="absolute inset-0 bg-blue-500/40 mix-blend-color z-10 pointer-events-none transition-opacity duration-700 group-hover/image:opacity-0" />
+                
+                {/* Optional: Slight dark multiply to ensure it matches dark theme perfectly */}
+                <div className="absolute inset-0 bg-slate-900/20 mix-blend-multiply z-10 pointer-events-none transition-opacity duration-700 group-hover/image:opacity-0" />
+ 
               </div>
             </div>
           </div>
