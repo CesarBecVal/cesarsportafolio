@@ -5,6 +5,7 @@ import TerminalComponent from './components/Terminal';
 import Section from './components/Section';
 import Button from './components/Button';
 import HeroLaptop from './components/HeroLaptop';
+import { Analytics } from '@vercel/analytics/react';
 import { Github, Linkedin, Twitter, ExternalLink, Mail, MapPin, Calendar, Download, Globe, Award } from 'lucide-react';
 
 // --- CONFIGURACIÓN DE IMÁGENES LOCALES ---
@@ -365,6 +366,9 @@ const App: React.FC = () => {
 
       {/* AI Terminal Widget */}
       <TerminalComponent lang={lang} />
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 };
