@@ -10,8 +10,6 @@ import { SpeedInsights } from '@vercel/speed-insights/react';
 import { Github, Linkedin, Twitter, ExternalLink, Mail, MapPin, Calendar, Download, Globe, Award } from 'lucide-react';
 
 // --- CONFIGURACIÓN DE IMÁGENES LOCALES ---
-// 1. Coloca tus imágenes en la carpeta "src/assets" (o similar).
-// 2. Importa tus imágenes descomentando las líneas de abajo y ajustando el nombre del archivo:
 import profileImg from './assets/mi-foto-perfil.jpg';
 import cvPdf from './assets/CV_CesarBV.pdf';
 // import projectImg1 from './assets/proyecto-1.jpg';
@@ -29,16 +27,9 @@ const App: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
   const content = PORTFOLIO_CONTENT[lang];
   const { personal, experience, skills, projects, education, certificates, labels } = content;
-  const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
+
 
   const toggleLang = () => setLang(prev => prev === 'es' ? 'en' : 'es');
-
-  const handleContactSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    setFormStatus('submitting');
-    // Simulate form submission
-    setTimeout(() => setFormStatus('success'), 1500);
-  };
 
   // Scroll Spy & Navbar Appearance Logic
   useEffect(() => {
@@ -337,32 +328,25 @@ const App: React.FC = () => {
           </div>
 
           <div className="max-w-lg mx-auto bg-slate-800/50 p-8 rounded-xl border border-white/10 backdrop-blur-sm">
-            {formStatus === 'success' ? (
-              <div className="text-center py-8">
-                <div className="text-accent text-5xl mb-4">✓</div>
-                <h4 className="text-xl font-bold text-white">{labels.contact.successTitle}</h4>
-                <p className="text-slate-400 mt-2">{labels.contact.successMessage}</p>
-                <button onClick={() => setFormStatus('idle')} className="mt-6 text-sm text-accent underline">{labels.contact.sendAnother}</button>
+            <form action="https://formsubmit.co/cesarbecerravalencia@gmail.com" method="POST" className="space-y-4">
+              <input type="text" name="_honey" style={{ display: 'none' }} />
+              {/* <input type="hidden" name="_next" value="http://localhost:5173/" /> */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-1">{labels.contact.formName}</label>
+                <input type="text" id="name" name="name" required className="w-full bg-slate-900/50 border border-slate-600 rounded p-3 text-white focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
               </div>
-            ) : (
-              <form onSubmit={handleContactSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-slate-400 mb-1">{labels.contact.formName}</label>
-                  <input type="text" id="name" required className="w-full bg-slate-900/50 border border-slate-600 rounded p-3 text-white focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
-                </div>
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-slate-400 mb-1">{labels.contact.formEmail}</label>
-                  <input type="email" id="email" required className="w-full bg-slate-900/50 border border-slate-600 rounded p-3 text-white focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
-                </div>
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-1">{labels.contact.formMessage}</label>
-                  <textarea id="message" rows={4} required className="w-full bg-slate-900/50 border border-slate-600 rounded p-3 text-white focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all"></textarea>
-                </div>
-                <Button type="submit" className="w-full" disabled={formStatus === 'submitting'}>
-                  {formStatus === 'submitting' ? labels.contact.formSending : labels.contact.formSubmit}
-                </Button>
-              </form>
-            )}
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-slate-400 mb-1">{labels.contact.formEmail}</label>
+                <input type="email" id="email" name="email" required className="w-full bg-slate-900/50 border border-slate-600 rounded p-3 text-white focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all" />
+              </div>
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-slate-400 mb-1">{labels.contact.formMessage}</label>
+                <textarea id="message" name="message" rows={4} required className="w-full bg-slate-900/50 border border-slate-600 rounded p-3 text-white focus:border-accent focus:ring-1 focus:ring-accent outline-none transition-all"></textarea>
+              </div>
+              <Button type="submit" className="w-full">
+                {labels.contact.formSubmit}
+              </Button>
+            </form>
           </div>
         </Section>
       </main>
