@@ -4,10 +4,29 @@ import { TERMINAL_COMMANDS } from '../constants';
 import { TerminalMessage } from '../types';
 import { Terminal, Send, Cpu, XCircle, Wifi, WifiOff } from 'lucide-react';
 
+/**
+ * @file Terminal.tsx
+ * @description Componente de interfaz de usuario que simula una terminal de comandos.
+ * Permite al usuario interactuar con el asistente de IA (o el modo demo) mediante texto.
+ * Incluye historial de chat, comandos nativos (help, clear) y feedback visual de estado.
+ * @author César
+ */
+
+/**
+ * @interface TerminalProps
+ * @property {'es' | 'en'} lang - El idioma actual de la interfaz para localizar mensajes del sistema.
+ */
 interface TerminalProps {
-    lang: 'es' | 'en';
+  lang: 'es' | 'en';
 }
 
+/**
+ * @component TerminalComponent
+ * @description Widget flotante que despliega una ventana de chat estilo terminal.
+ * Gestiona el estado de la conversación, la visibilidad de la ventana y la comunicación con el servicio de IA.
+ * 
+ * @param {TerminalProps} props - Propiedades del componente.
+ */
 const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [input, setInput] = useState('');
@@ -17,14 +36,14 @@ const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
 
   // Initialize history based on language
   useEffect(() => {
-      setHistory([{ 
-        id: 'init', 
-        type: 'system', 
-        content: lang === 'es' 
-            ? 'Bienvenido a Portfolio OS v1.0. Escribe "help" para ver comandos o pregunta lo que quieras.' 
-            : 'Welcome to Portfolio OS v1.0. Type "help" for commands or just ask anything.', 
-        timestamp: Date.now() 
-      }]);
+    setHistory([{
+      id: 'init',
+      type: 'system',
+      content: lang === 'es'
+        ? 'Bienvenido a Portfolio OS v1.0. Escribe "help" para ver comandos o pregunta lo que quieras.'
+        : 'Welcome to Portfolio OS v1.0. Type "help" for commands or just ask anything.',
+      timestamp: Date.now()
+    }]);
   }, [lang]);
 
   // Auto-scroll to bottom
@@ -34,6 +53,12 @@ const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
     }
   }, [history, isOpen]);
 
+  /**
+   * Maneja el envío de comandos por parte del usuario.
+   * Procesa comandos nativos (clear, help) localmente o delega a la IA para generar respuestas.
+   * 
+   * @param {React.FormEvent} e - Evento del formulario.
+   */
   const handleCommand = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input.trim()) return;
@@ -57,7 +82,7 @@ const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
       setIsLoading(false);
       return;
     }
-    
+
     if (lowerCmd === TERMINAL_COMMANDS.HELP) {
       setTimeout(() => {
         setHistory(prev => [...prev, {
@@ -76,9 +101,9 @@ const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
     // AI or Fallback logic
     // Check if Environment Key is available (Client-side check for UI feedback only)
     const hasKey = !!process.env.API_KEY;
-    
+
     let responseText = '';
-    
+
     if (hasKey) {
       try {
         responseText = await generateResponse(input, lang);
@@ -88,11 +113,11 @@ const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
     } else {
       // Fallback Mode if no key configured in .env
       responseText = getDemoResponse(input, lang);
-      
+
       if ((responseText.includes('no reconocido') || responseText.includes('not recognized')) && !responseText.includes('[SYSTEM]')) {
-         responseText += lang === 'es' 
-            ? "\n\n[SYSTEM]: Modo Demo activo. Para IA real, configura API_KEY en .env."
-            : "\n\n[SYSTEM]: Demo Mode active. For real AI, configure API_KEY in .env.";
+        responseText += lang === 'es'
+          ? "\n\n[SYSTEM]: Modo Demo activo. Para IA real, configura API_KEY en .env."
+          : "\n\n[SYSTEM]: Demo Mode active. For real AI, configure API_KEY in .env.";
       }
     }
 
@@ -110,7 +135,7 @@ const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
   return (
     <>
       {/* Trigger Button */}
-      <button 
+      <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-6 right-6 z-50 p-4 bg-slate-900/90 text-accent border border-accent/30 rounded-full shadow-[0_0_15px_rgba(0,184,217,0.3)] hover:bg-accent hover:text-white transition-all duration-300 hover:scale-110 group"
         aria-label="Open AI Terminal"
@@ -121,7 +146,7 @@ const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
       {/* Terminal Window */}
       {isOpen && (
         <div className="fixed bottom-24 right-6 w-[90vw] md:w-[450px] max-h-[60vh] flex flex-col bg-[#0d1117]/95 backdrop-blur-xl border border-slate-700 rounded-xl shadow-2xl overflow-hidden z-40 ring-1 ring-white/10 animate-in slide-in-from-bottom-10 duration-300">
-          
+
           {/* Header */}
           <div className="flex items-center justify-between px-4 py-2 bg-slate-800/50 border-b border-slate-700">
             <div className="flex items-center gap-2 text-xs text-slate-400 font-mono">
@@ -129,24 +154,24 @@ const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
               <span>user@portfolio:~</span>
             </div>
             <div className="flex items-center gap-2">
-               <div className="flex items-center gap-1 text-[10px] text-slate-500 uppercase tracking-wider">
-                 {process.env.API_KEY ? (
-                     <>
-                        <Wifi size={12} className="text-green-500" />
-                        <span>Online</span>
-                     </>
-                 ) : (
-                     <>
-                        <WifiOff size={12} className="text-orange-500" />
-                        <span>Demo Mode</span>
-                     </>
-                 )}
-               </div>
+              <div className="flex items-center gap-1 text-[10px] text-slate-500 uppercase tracking-wider">
+                {process.env.API_KEY ? (
+                  <>
+                    <Wifi size={12} className="text-green-500" />
+                    <span>Online</span>
+                  </>
+                ) : (
+                  <>
+                    <WifiOff size={12} className="text-orange-500" />
+                    <span>Demo Mode</span>
+                  </>
+                )}
+              </div>
             </div>
           </div>
 
           {/* Output Area */}
-          <div 
+          <div
             ref={scrollRef}
             className="flex-1 p-4 overflow-y-auto font-mono text-sm space-y-3 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent"
           >
@@ -155,23 +180,22 @@ const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
                 <span className={`text-[10px] mb-1 opacity-50 ${msg.type === 'user' ? 'text-right' : 'text-left'}`}>
                   {msg.type === 'user' ? 'YOU' : msg.type === 'system' ? 'SYSTEM' : 'AI'}
                 </span>
-                <div className={`p-2 rounded max-w-[85%] whitespace-pre-wrap break-words ${
-                    msg.type === 'user' 
-                        ? 'bg-slate-800 text-slate-200 rounded-br-none' 
-                        : msg.type === 'system'
-                        ? 'text-yellow-500/90 italic pl-0'
-                        : 'text-accent/90 pl-0'
-                }`}>
-                    {msg.type !== 'user' && <span className="mr-2 text-accent font-bold">{'>'}</span>}
-                    {msg.content}
+                <div className={`p-2 rounded max-w-[85%] whitespace-pre-wrap break-words ${msg.type === 'user'
+                  ? 'bg-slate-800 text-slate-200 rounded-br-none'
+                  : msg.type === 'system'
+                    ? 'text-yellow-500/90 italic pl-0'
+                    : 'text-accent/90 pl-0'
+                  }`}>
+                  {msg.type !== 'user' && <span className="mr-2 text-accent font-bold">{'>'}</span>}
+                  {msg.content}
                 </div>
               </div>
             ))}
             {isLoading && (
-                <div className="flex items-center gap-1 text-accent pl-2">
-                    <span>{'>'}</span>
-                    <span className="animate-pulse">_</span>
-                </div>
+              <div className="flex items-center gap-1 text-accent pl-2">
+                <span>{'>'}</span>
+                <span className="animate-pulse">_</span>
+              </div>
             )}
           </div>
 
@@ -187,7 +211,7 @@ const TerminalComponent: React.FC<TerminalProps> = ({ lang }) => {
               autoFocus
             />
             <button type="submit" disabled={!input.trim()} className="text-slate-400 hover:text-accent disabled:opacity-30 transition-colors">
-                <Send size={16} />
+              <Send size={16} />
             </button>
           </form>
         </div>

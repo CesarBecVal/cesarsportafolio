@@ -1,5 +1,18 @@
 import { PortfolioData } from './types';
 
+/**
+ * @file constants.ts
+ * @description Este archivo contiene todas las constantes y datos estáticos utilizados en el portafolio.
+ * Centraliza la información para facilitar su mantenimiento y la gestión del soporte multi-idioma (Español/Inglés).
+ * @author César
+ */
+
+/**
+ * @constant SHARED_DATA
+ * @description Datos compartidos que son agnósticos del idioma, como habilidades técnicas,
+ * enlaces a redes sociales, correo electrónico y certificados.
+ * Se reutilizan tanto en la versión en español como en inglés.
+ */
 const SHARED_DATA = {
   skills: [
     { name: "Java" },
@@ -21,29 +34,36 @@ const SHARED_DATA = {
   email: "alex.dev@example.com",
   certificates: [
     {
-        id: "c1",
-        title: "Google Data Analytics Professional Certificate",
-        issuer: "Coursera / Google",
-        date: "2023",
-        link: "#"
+      id: "c1",
+      title: "Google Data Analytics Professional Certificate",
+      issuer: "Coursera / Google",
+      date: "2023",
+      link: "#"
     },
     {
-        id: "c2",
-        title: "React - The Complete Guide",
-        issuer: "Udemy",
-        date: "2023",
-        link: "#"
+      id: "c2",
+      title: "React - The Complete Guide",
+      issuer: "Udemy",
+      date: "2023",
+      link: "#"
     },
     {
-        id: "c3",
-        title: "AWS Certified Cloud Practitioner",
-        issuer: "Amazon Web Services",
-        date: "2022",
-        link: "#"
+      id: "c3",
+      title: "AWS Certified Cloud Practitioner",
+      issuer: "Amazon Web Services",
+      date: "2022",
+      link: "#"
     }
   ]
 };
 
+/**
+ * @constant PORTFOLIO_CONTENT
+ * @type {Record<'es' | 'en', PortfolioData>}
+ * @description Objeto principal que contiene todo el contenido textual del portafolio,
+ * dividido por idioma ('es' para español, 'en' para inglés).
+ * Incluye información personal, experiencia laboral, proyectos, educación y etiquetas de la UI.
+ */
 export const PORTFOLIO_CONTENT: Record<'es' | 'en', PortfolioData> = {
   es: {
     personal: {
@@ -268,6 +288,11 @@ export const PORTFOLIO_CONTENT: Record<'es' | 'en', PortfolioData> = {
   }
 };
 
+/**
+ * @constant TERMINAL_COMMANDS
+ * @description Define los comandos disponibles para el widget de terminal interactiva.
+ * Mapea las acciones del usuario a identificadores de comandos específicos.
+ */
 export const TERMINAL_COMMANDS = {
   HELP: 'help',
   EXPERIENCE: 'experiencia',

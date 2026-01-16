@@ -1,4 +1,11 @@
 import React, { useState, useEffect } from 'react';
+
+/**
+ * @file App.tsx
+ * @description Componente principal de la aplicación. Actúa como el contenedor raíz y gestor de estado global.
+ * Maneja la lógica de navegación, internacionalización (i18n) y el diseño general (Layout).
+ * @author César
+ */
 import { PORTFOLIO_CONTENT } from './constants';
 import Background from './components/Background';
 import TerminalComponent from './components/Terminal';
@@ -21,6 +28,16 @@ const PROJECT_IMAGES: Record<string, string> = {
 };
 // -----------------------------------------
 
+/**
+ * @component App
+ * @description Componente raíz que orquesta toda la aplicación.
+ * 
+ * Responsabilidades principales:
+ * 1. Gestión del estado del idioma (Español/Inglés).
+ * 2. Lógica de "Scroll Spy" para actualizar la navegación activa.
+ * 3. Renderizado de todas las secciones principales (Hero, About, Experience, etc.).
+ * 4. Integración de widgets globales (Terminal, Analytics).
+ */
 const App: React.FC = () => {
   const [lang, setLang] = useState<'es' | 'en'>('es');
   const [activeSection, setActiveSection] = useState<string>('hero');
@@ -29,9 +46,19 @@ const App: React.FC = () => {
   const { personal, experience, skills, projects, education, certificates, labels } = content;
 
 
+  /**
+   * Cambia el idioma de la aplicación entre español ('es') e inglés ('en').
+   */
   const toggleLang = () => setLang(prev => prev === 'es' ? 'en' : 'es');
 
   // Scroll Spy & Navbar Appearance Logic
+  // Lógica de Scroll Spy y Apariencia de la Barra de Navegación
+  /**
+   * @effect ScrollSpy
+   * @description Detecta la posición del scroll para:
+   * 1. Cambiar el estilo de la barra de navegación (transparente vs. fondo sólido).
+   * 2. Determinar qué sección está visible actualmente para resaltarla en el menú.
+   */
   useEffect(() => {
     const handleScroll = () => {
       // Toggle navbar pill style
