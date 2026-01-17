@@ -17,42 +17,52 @@ const SHARED_DATA = {
   skills: [
     { name: "Java" },
     { name: "Python" },
+    { name: "Haskell" },
+    { name: "C" },
+    { name: "Lean 4" },
     { name: "Linux (RedHat/CentOS)" },
     { name: "SQL (MySQL/PostgreSQL)" },
     { name: "Docker" },
     { name: "Git" },
-    { name: "Splunk / Zabbix" },
+    { name: "Global Hits" },
+    { name: "Zendesk" },
     { name: "Bash Scripting" },
-    { name: "REST APIs" },
-    { name: "Ciberseguridad Básica" }
+    { name: "REST APIs" }
   ],
   socials: {
-    linkedin: "https://linkedin.com",
-    github: "https://github.com",
-    twitter: "https://twitter.com"
+    linkedin: "https://www.linkedin.com/in/cesar-becerra-valencia-2bb5751b8/",
+    github: "https://github.com/CesarBecVal",
+    twitter: "https://x.com/cbecval?s=21"
   },
-  email: "alex.dev@example.com",
+  email: "cesarbecerravalencia@gmail.com",
   certificates: [
     {
       id: "c1",
-      title: "Google Data Analytics Professional Certificate",
-      issuer: "Coursera / Google",
-      date: "2023",
-      link: "#"
+      title: "Introduction to SQL",
+      issuer: "DataCamp",
+      date: "2025",
+      link: "https://www.datacamp.com/completed/statement-of-accomplishment/course/eb264aae756ffa157ae893b107e3fa92268438ca"
     },
     {
       id: "c2",
-      title: "React - The Complete Guide",
-      issuer: "Udemy",
-      date: "2023",
-      link: "#"
+      title: "Understanding Prompt Engineering",
+      issuer: "DataCamp",
+      date: "2025",
+      link: "https://www.datacamp.com/completed/statement-of-accomplishment/course/80d4e85b550fdc31b2f51bece85771656731b544"
     },
     {
       id: "c3",
-      title: "AWS Certified Cloud Practitioner",
-      issuer: "Amazon Web Services",
-      date: "2022",
-      link: "#"
+      title: "Writing Functions using Java",
+      issuer: "CodeSignal",
+      date: "2025",
+      link: "https://codesignal.com/learn/certificates/cm8uobwga000bnredjott1c6b/courses/36"
+    },
+    {
+      id: "c4",
+      title: "Introduction to Git",
+      issuer: "DataCamp",
+      date: "2025",
+      link: "https://www.datacamp.com/completed/statement-of-accomplishment/course/a11fe529853c2fde897fa7896f85e6abe91c6728"
     }
   ]
 };
@@ -70,7 +80,7 @@ export const PORTFOLIO_CONTENT: Record<'es' | 'en', PortfolioData> = {
       name: "César",
       title: "Desarrollador Backend Jr. • Estudiante de Ciencias de la Computación",
       shortBio: "Estudiante de la UNAM enfocado en Backend, Infraestructura y Seguridad. Experiencia real resolviendo incidentes críticos en banca y monitoreo de sistemas.",
-      longBio: "Soy César, estudiante de 3er semestre de Ciencias de la Computación en la UNAM. A diferencia del promedio, ya cuento con experiencia laboral real gestionando incidentes de TI y analizando logs para prevención de fraudes. Me apasiona la lógica del servidor, Linux y la arquitectura de nube. Busco retos técnicos, no solo visuales.",
+      longBio: "Soy César, estudiante del 4to semestre de Ciencias de la Computación en la UNAM. A diferencia del promedio, ya cuento con experiencia laboral real gestionando incidentes de TI y analizando logs para prevención de fraudes. Me apasiona la lógica del servidor, Linux y la arquitectura de nube. Busco retos técnicos, no solo visuales.",
       location: "Ciudad de México, México",
       availability: "Becario / Medio Tiempo",
       email: SHARED_DATA.email,
@@ -87,10 +97,10 @@ export const PORTFOLIO_CONTENT: Record<'es' | 'en', PortfolioData> = {
       },
       {
         id: "2",
-        period: "2022 — 2024",
-        company: "Creative Agency",
-        role: "Frontend Developer",
-        description: "Colaboración estrecha con equipos de diseño para traducir mockups de Figma a código pixel-perfect. Integración de APIs RESTful y GraphQL."
+        period: "12/2025 — Presente",
+        company: "VLC Marketing",
+        role: "Chief Technology Officer (CTO)",
+        description: "Responsable del área tecnológica, lidero la ejecución de proyectos digitales y actúo como asesor estratégico para la toma de decisiones técnicas de la empresa con desarrollo web de alto rendimiento."
       }
     ],
     skills: SHARED_DATA.skills,
@@ -178,7 +188,7 @@ export const PORTFOLIO_CONTENT: Record<'es' | 'en', PortfolioData> = {
       title: "Junior Backend Developer • CS Student",
       shortBio: "CS Student at UNAM focused on Backend, Infrastructure, and Security. Real-world experience solving critical incidents in banking and system monitoring.",
       // Traducción profesional que eleva tu perfil
-      longBio: "I'm César, a 3rd-semester Computer Science student at UNAM. Unlike the average student, I already have professional experience managing IT incidents and analyzing logs for fraud prevention. I am passionate about server-side logic, Linux, and Cloud architecture. I look for technical challenges, not just visual ones.",
+      longBio: "I'm César, a 4th-semester Computer Science student at UNAM. Unlike the average student, I already have professional experience managing IT incidents and analyzing logs for fraud prevention. I am passionate about server-side logic, Linux, and Cloud architecture. I look for technical challenges, not just visual ones.",
       location: "Mexico City, Mexico",
       availability: "Internship / Part-time",
       email: SHARED_DATA.email,
@@ -194,10 +204,10 @@ export const PORTFOLIO_CONTENT: Record<'es' | 'en', PortfolioData> = {
       },
       {
         id: "2",
-        period: "2022 — 2024",
-        company: "Creative Agency",
-        role: "Frontend Developer",
-        description: "Close collaboration with design teams to translate Figma mockups into pixel-perfect code. Integration of RESTful APIs and GraphQL."
+        period: "12/2025 — Present",
+        company: "VLC Marketing",
+        role: "Chief Technology Officer (CTO)",
+        description: "Responsible for the technology department, I lead the execution of digital projects and serve as a strategic advisor in the company’s technical decision-making, focusing on high-performance web development."
       }
     ],
     skills: SHARED_DATA.skills,
