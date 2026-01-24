@@ -182,7 +182,7 @@ const App: React.FC = () => {
 
             {/* Right Column: Interactive Laptop */}
             <div className="order-1 lg:order-2 flex justify-center items-center perspective-container animate-in fade-in zoom-in duration-1000 delay-300">
-              <HeroLaptop />
+              <HeroLaptop lang={lang} />
             </div>
 
           </div>

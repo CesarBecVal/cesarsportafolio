@@ -71,7 +71,7 @@ const Section: React.FC<SectionProps> = ({ id, title, className = '', children }
     >
       {title && (
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-slate-100 flex items-center gap-3">
-          <span className="text-accent font-mono text-xl">0{['about', 'experience', 'skills', 'projects', 'education', 'contact'].indexOf(id) + 1}.</span>
+          <span className="text-accent font-mono text-xl">0{['sobre-mí', 'experience', 'skills', 'projects', 'education', 'certificates', 'contact'].indexOf(id) + 1}.</span>
           {title}
           <div className="h-px bg-slate-700 flex-grow ml-6 max-w-xs" />
         </h2>

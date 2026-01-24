@@ -18,7 +18,11 @@ import React from 'react';
  * - Animaciones de entrada y efectos hover (elevación, brillo).
  * - "Toast" de éxito que aparece flotando al interactuar.
  */
-const HeroLaptop: React.FC = () => {
+interface HeroLaptopProps {
+  lang: 'es' | 'en';
+}
+
+const HeroLaptop: React.FC<HeroLaptopProps> = ({ lang }) => {
   return (
     <div className="relative group cursor-default perspective-1000 w-full max-w-lg mx-auto transform transition-transform duration-500 hover:scale-105">
 
@@ -86,7 +90,7 @@ const HeroLaptop: React.FC = () => {
               <rect x="390" y="215" width="80" height="6" rx="2" fill="#334155" opacity="0.2" />
 
               {/* --- SUCCESS TOAST (Floating Overlay) --- */}
-              <g className="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-150">
+              <g className="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-150 transform-gpu">
                 {/* Centered relative to screen width or bottom aligned */}
                 <rect x="160" y="240" width="280" height="50" rx="6" fill="#0f172a" stroke="#10b981" strokeWidth="1" className="drop-shadow-[0_4px_12px_rgba(0,0,0,0.5)]" />
 
@@ -95,8 +99,17 @@ const HeroLaptop: React.FC = () => {
                 <path d="M181 265 L184 268 L189 262" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 
                 {/* Text lines inside toast */}
-                <rect x="205" y="258" width="140" height="6" rx="2" fill="#e2e8f0" />
-                <rect x="205" y="270" width="80" height="4" rx="2" fill="#64748b" />
+                <text
+                  x="205"
+                  y="270"
+                  fill="#e2e8f0"
+                  fontSize="15"
+                  fontFamily="system-ui"
+                  fontWeight="bold"
+                  style={{ WebkitFontSmoothing: 'antialiased', MozOsxFontSmoothing: 'grayscale' }}
+                >
+                  {lang === 'es' ? '¡Contáctame!' : 'Contact Me!'}
+                </text>
               </g>
 
             </g>
