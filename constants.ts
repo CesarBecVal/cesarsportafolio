@@ -77,11 +77,11 @@ const SHARED_DATA = {
 export const PORTFOLIO_CONTENT: Record<'es' | 'en', PortfolioData> = {
   es: {
     personal: {
-      name: "César",
-      title: "Desarrollador Backend Jr. • Estudiante de Ciencias de la Computación",
-      shortBio: "Estudiante de la UNAM enfocado en Backend, Infraestructura y Seguridad. Experiencia real resolviendo incidentes críticos en banca y monitoreo de sistemas.",
-      longBio: "Soy César, estudiante del 4to semestre de Ciencias de la Computación en la UNAM. A diferencia del promedio, ya cuento con experiencia laboral real gestionando incidentes de TI y analizando logs para prevención de fraudes. Me apasiona la lógica del servidor, Linux y la arquitectura de nube. Busco retos técnicos, no solo visuales.",
-      location: "Ciudad de México, México",
+      name: "César Becerra Valencia",
+      title: "Desarrollador Web Backend & Java • Estudiante CS UNAM",
+      shortBio: "Desarrollador de Software Java Junior y Estudiante de Ciencias de la Computación UNAM. Especializado en Backend, Linux y Seguridad. CTO en VLC Agencia.",
+      longBio: "Soy César Becerra Valencia, Desarrollador Web y Programador Java con base en Nezahualcóyotl, México. Actualmente curso el 4to semestre de Ciencias de la Computación en la UNAM. Cuento con experiencia real como CTO en VLC Agencia y gestionando incidentes críticos de TI. Me apasiona el desarrollo backend, Linux y la seguridad informática.",
+      location: "Nezahualcóyotl, Estado de México",
       availability: "Becario / Medio Tiempo",
       email: SHARED_DATA.email,
       socials: SHARED_DATA.socials
@@ -184,12 +184,12 @@ export const PORTFOLIO_CONTENT: Record<'es' | 'en', PortfolioData> = {
   },
   en: {
     personal: {
-      name: "César",
-      title: "Junior Backend Developer • CS Student",
-      shortBio: "CS Student at UNAM focused on Backend, Infrastructure, and Security. Real-world experience solving critical incidents in banking and system monitoring.",
+      name: "César Becerra Valencia",
+      title: "Junior Backend Java Developer • CS Student UNAM",
+      shortBio: "Computer Science Student at UNAM focused on Backend, Linux, and Security. CTO at VLC Agency with experience in critical incident resolution.",
       // Traducción profesional que eleva tu perfil
-      longBio: "I'm César, a 4th-semester Computer Science student at UNAM. Unlike the average student, I already have professional experience managing IT incidents and analyzing logs for fraud prevention. I am passionate about server-side logic, Linux, and Cloud architecture. I look for technical challenges, not just visual ones.",
-      location: "Mexico City, Mexico",
+      longBio: "I'm César Becerra Valencia, a Web Developer and Java Programmer based in Nezahualcóyotl, Mexico. I am a 4th-semester Computer Science student at UNAM. Unlike the average student, I have professional experience as CTO at VLC Agency and managing IT incidents. I am passionate about server-side logic, Linux, and Cloud architecture.",
+      location: "Nezahualcóyotl, Mexico State",
       availability: "Internship / Part-time",
       email: SHARED_DATA.email,
       socials: SHARED_DATA.socials
